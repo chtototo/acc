@@ -4,6 +4,8 @@ import moment from "moment";
 
 const START_TIME = "Mon May 1 2025 12:00:00 GMT+0000";
 const showForm = ref(false);
+const firstOpen = ref(true); 
+const animateOnce = ref(false);
 
 function getWordForm(number, forms) {
   number = Math.abs(number) % 100;
@@ -25,6 +27,12 @@ const dayLabel = ref("дней"),
 
 function openForm() {
   showForm.value = true;
+   if (firstOpen.value) {
+    animateOnce.value = true;
+    firstOpen.value = false;
+  } else {
+    animateOnce.value = false;
+  }
 }
 
 function closeForm() {
@@ -75,7 +83,8 @@ onUnmounted(() => {
       class="text-white px-[5vw] sm:pt-28 max-sm:pt-8 flex flex-col items-center gap-4 max-sm:gap-16"
     >
       <div class="flex flex-col gap-2">
-        <transition name="fade">
+        <transition :name="animateOnce ? 'slide-down' : ''">
+
           <div
             v-if="showForm"
             class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4 font-light text-zinc-500"

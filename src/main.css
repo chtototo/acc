@@ -36,17 +36,18 @@ button:hover, a:hover, button:active {
   opacity: 0;
 }
 
-.from-top-enter-active {
-  animation: slideTop 0.4s ease-out;
-}
-
-@keyframes slideTop {
-    from {
-      transform: translateY(-50px);
+.slide-down-enter-active {
+    animation: slideDown 0.5s ease forwards;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-30%);
       opacity: 0;
     }
-    to {
+    100% {
       transform: translateY(0);
       opacity: 1;
     }
   }
+  
