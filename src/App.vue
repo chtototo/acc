@@ -243,21 +243,21 @@ onUnmounted(() => {
           <div class="flex flex-row gap-8 items-center">
             <a href="">
               <img
-                class="h-[clamp(3rem,10vw,8rem)]"
+                class="h-[clamp(3rem,10vw,6rem)]"
                 src="./images/миркато.png"
                 alt=""
               />
             </a>
             <a href="">
               <img
-                class="h-[clamp(4rem,15vw,12rem)]"
+                class="h-[clamp(4rem,15vw,10rem)]"
                 src="./images/дихард.png"
                 alt=""
               />
             </a>
             <a href="">
               <img
-                class="h-[clamp(3rem,10vw,8rem)]"
+                class="h-[clamp(3rem,10vw,6rem)]"
                 src="./images/архитек.png"
                 alt=""
               />
