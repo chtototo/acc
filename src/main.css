@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: Montserrat;
+        font-weight: 700;
+    }
+}
+
+#app {
+    @apply w-full relative
+}
+
+body {
+    @apply overflow-x-hidden min-h-screen sm:overflow-y-hidden
+}
+
+.text-stroke {
+    -webkit-text-stroke: 4px #5029de;
+    paint-order: stroke fill;
+}
+
+button:hover, a:hover {
+    @apply transition-[all_.2s_ease-in-out] hover:scale-[.97] hover:brightness-[.9]
+}
