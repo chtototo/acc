@@ -81,7 +81,7 @@ onUnmounted(() => {
             class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4 font-light text-zinc-500"
           >
             <div
-              class="bg-white rounded-xl shadow-xl max-w-md w-full pt-6 pb-12 px-16 max-sm:px-4 relative"
+              class="bg-white rounded-xl shadow-xl max-w-md w-full pt-6 pb-12 px-16 max-sm:px-4 relative overflow-y-auto max-h-screen"
             >
               <button
                 @click="closeForm"
@@ -102,7 +102,7 @@ onUnmounted(() => {
                   <input
                     id="name"
                     type="text"
-                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
                   />
                 </div>
 
@@ -113,7 +113,7 @@ onUnmounted(() => {
                   <input
                     id="email"
                     type="email"
-                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
                   />
                 </div>
 
@@ -124,7 +124,7 @@ onUnmounted(() => {
                   <input
                     id="phone"
                     type="tel"
-                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
                   />
                 </div>
 
@@ -135,13 +135,27 @@ onUnmounted(() => {
                   <input
                     id="team"
                     type="text"
-                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
                   />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label for="weight" class="text-sm font-normal">
+                    Вес <span>*</span>
+                  </label>
+                  <select
+                    id="weight"
+                    class="border p-2 rounded-md focus:outline-[#5029de] bg-white h-10"
+                  >
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                  </select>
                 </div>
 
                 <button
                   type="submit"
-                  class="mt-2 bg-[#5029de] text-white py-2 rounded-md hover:bg-[#4124ab] transition shadow-[]"
+                  class="mt-2 bg-[#5029de] text-white py-2 rounded-md hover:bg-[#4124ab] transition shadow-[0_5px_5px_#00000050]"
                 >
                   Зарегистрироваться
                 </button>
