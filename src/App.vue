@@ -4,7 +4,8 @@ import moment from "moment";
 
 const START_TIME = "Mon May 1 2025 12:00:00 GMT+0000";
 const showForm = ref(false);
-const firstOpen = ref(true); 
+const showPrivacyPolicy = ref(false);
+const firstOpen = ref(true);
 const animateOnce = ref(false);
 
 function getWordForm(number, forms) {
@@ -27,7 +28,7 @@ const dayLabel = ref("дней"),
 
 function openForm() {
   showForm.value = true;
-   if (firstOpen.value) {
+  if (firstOpen.value) {
     animateOnce.value = true;
     firstOpen.value = false;
   } else {
@@ -37,6 +38,15 @@ function openForm() {
 
 function closeForm() {
   showForm.value = false;
+}
+
+function openPrivacyPolicy() {
+  showPrivacyPolicy.value = true;
+  closeForm();
+}
+
+function closePrivacyPolicy() {
+  showPrivacyPolicy.value = false;
 }
 
 let intervalId;
@@ -72,7 +82,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen w-full relative overflow-x-hidden">
+  <div
+    class="min-h-screen w-full relative overflow-x-hidden"
+    :class="showForm ? 'touch-none' : ''"
+  >
     <div
       class="absolute inset-0 -z-10 bg-[url(./images/background.jpg)] bg-no-repeat bg-cover bg-[center_66%]"
     ></div>
@@ -84,7 +97,6 @@ onUnmounted(() => {
     >
       <div class="flex flex-col gap-2">
         <transition :name="animateOnce ? 'slide-down' : ''">
-
           <div
             v-if="showForm"
             class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4 font-light text-zinc-500"
@@ -112,6 +124,7 @@ onUnmounted(() => {
                     id="name"
                     type="text"
                     class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    required
                   />
                 </div>
 
@@ -123,6 +136,7 @@ onUnmounted(() => {
                     id="email"
                     type="email"
                     class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    required
                   />
                 </div>
 
@@ -134,6 +148,7 @@ onUnmounted(() => {
                     id="phone"
                     type="tel"
                     class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    required
                   />
                 </div>
 
@@ -145,6 +160,7 @@ onUnmounted(() => {
                     id="team"
                     type="text"
                     class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    required
                   />
                 </div>
 
@@ -170,12 +186,46 @@ onUnmounted(() => {
                 </button>
                 <p class="text-[.65em] text-center text-zinc-600">
                   Нажимая кнопку, вы даете согласие на
-                  <a class="underline" href="">обработку персональных данных</a>
+                  <button @click="openPrivacyPolicy" class="underline">
+                    обработку персональных данных
+                  </button>
                 </p>
               </form>
             </div>
           </div>
         </transition>
+
+        <transition name="fade">
+          <div
+            v-if="showPrivacyPolicy"
+            class="fixed inset-0 z-50 flex items-center justify-center px-4 font-light text-zinc-500"
+          >
+            <div
+              class="fixed inset-0 bg-black/50 z-40"
+              @click="showPrivacyPolicy = false"
+            ></div>
+            <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-8 z-50">
+              <button
+                @click="showPrivacyPolicy = false"
+                class="absolute top-2 right-3 text-3xl cursor-pointer"
+              >
+                ×
+              </button>
+              <h3 class="text-xl font-semibold text-center mb-6">
+                Политика конфиденциальности
+              </h3>
+              <p>
+                Ваши персональные данные будут использоваться исключительно для
+                целей обработки вашей заявки. Мы уважаем вашу конфиденциальность
+                и не передаем информацию третьим лицам. Согласие на обработку
+                персональных данных является обязательным для продолжения
+                использования формы.
+              </p>
+              <!-- Дополнительно можно добавить весь текст политики -->
+            </div>
+          </div>
+        </transition>
+
         <h1
           class="text-[clamp(3rem,5vw,4rem)] border-2 border-[#5029de] bg-black/50 uppercase px-[2vw] py-[2vh] text-stroke text-center max-sm:text-[1rem] max-sm:px-[8vw]"
         >
@@ -210,28 +260,28 @@ onUnmounted(() => {
           <p class="font-medium text-sm sm:hidden">До турнира осталось:</p>
           <div class="flex flex-row justify-between w-full px-[5vw]">
             <div class="flex flex-col text-center">
-              <p class="text-[clamp(2rem,8vw,6rem)]">{{ days }}</p>
+              <p class="text-[clamp(2rem,8vw,4rem)]">{{ days }}</p>
               <p class="text-[clamp(1rem,2vw,1.5rem)] font-normal">
                 {{ dayLabel }}
               </p>
             </div>
             <p class="text-[clamp(2rem,8vw,6rem)]">:</p>
             <div class="flex flex-col text-center">
-              <p class="text-[clamp(2rem,8vw,6rem)]">{{ hours }}</p>
+              <p class="text-[clamp(2rem,8vw,4rem)]">{{ hours }}</p>
               <p class="text-[clamp(1rem,2vw,1.5rem)] font-normal">
                 {{ hourLabel }}
               </p>
             </div>
             <p class="text-[clamp(2rem,8vw,6rem)]">:</p>
             <div class="flex flex-col text-center">
-              <p class="text-[clamp(2rem,8vw,6rem)]">{{ minutes }}</p>
+              <p class="text-[clamp(2rem,8vw,4rem)]">{{ minutes }}</p>
               <p class="text-[clamp(1rem,2vw,1.5rem)] font-normal">
                 {{ minuteLabel }}
               </p>
             </div>
             <p class="text-[clamp(2rem,8vw,6rem)]">:</p>
             <div class="flex flex-col text-center">
-              <p class="text-[clamp(2rem,8vw,6rem)]">{{ seconds }}</p>
+              <p class="text-[clamp(2rem,8vw,4rem)]">{{ seconds }}</p>
               <p class="text-[clamp(1rem,2vw,1.5rem)] font-normal">
                 {{ secondLabel }}
               </p>
@@ -271,21 +321,21 @@ onUnmounted(() => {
           <div class="flex flex-row gap-8 items-center">
             <a href="">
               <img
-                class="h-[clamp(4rem,10vw,6rem)]"
+                class="h-[clamp(4rem,10vw,4rem)]"
                 src="./images/миркато.png"
                 alt=""
               />
             </a>
             <a href="">
               <img
-                class="h-[clamp(6rem,15vw,10rem)]"
+                class="h-[clamp(6rem,15vw,8rem)]"
                 src="./images/дихард.png"
                 alt=""
               />
             </a>
             <a href="">
               <img
-                class="h-[clamp(4rem,10vw,6rem)]"
+                class="h-[clamp(4rem,10vw,4rem)]"
                 src="./images/архитек.png"
                 alt=""
               />
