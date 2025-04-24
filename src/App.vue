@@ -66,7 +66,7 @@ onUnmounted(() => {
 <template>
   <div class="min-h-screen w-full relative overflow-x-hidden">
     <div
-      class="fixed inset-0 -z-10 bg-[url(./images/background.jpg)] bg-no-repeat bg-cover bg-[center_66%]"
+      class="absolute inset-0 -z-10 bg-[url(./images/background.jpg)] bg-no-repeat bg-cover bg-[center_66%]"
     ></div>
 
     <div class="fixed inset-0 -z-10 bg-black/50"></div>
@@ -75,86 +75,91 @@ onUnmounted(() => {
       class="text-white px-[5vw] sm:pt-28 max-sm:pt-8 flex flex-col items-center gap-4 max-sm:gap-16"
     >
       <div class="flex flex-col gap-2">
-        <div
-          v-if="showForm"
-          class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4 font-light text-zinc-500"
-        >
+        <transition name="fade">
           <div
-            class="bg-white rounded-xl shadow-xl max-w-md w-full pt-6 pb-12 px-16 max-sm:px-4 relative"
+            v-if="showForm"
+            class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4 font-light text-zinc-500"
           >
-            <button @click="closeForm" class="absolute top-2 right-3 text-3xl">
-              ×
-            </button>
-
-            <h2 class="text-md font-medium my-8 text-center">
-              Отправь заявку на чемпионат прямо сейчас!
-            </h2>
-
-            <form class="flex flex-col gap-4">
-              <div class="flex flex-col gap-1">
-                <label for="name" class="text-sm font-normal"
-                  >ФИО <span>*</span></label
-                >
-                <input
-                  id="name"
-                  type="text"
-                  class="border p-2 rounded-md focus:outline-[#5029de]"
-                />
-              </div>
-
-              <div class="flex flex-col gap-1">
-                <label for="email" class="text-sm font-normal"
-                  >Email <span>*</span></label
-                >
-                <input
-                  id="email"
-                  type="email"
-                  class="border p-2 rounded-md focus:outline-[#5029de]"
-                />
-              </div>
-
-              <div class="flex flex-col gap-1">
-                <label for="phone" class="text-sm font-normal"
-                  >Телефон <span>*</span></label
-                >
-                <input
-                  id="phone"
-                  type="tel"
-                  class="border p-2 rounded-md focus:outline-[#5029de]"
-                />
-              </div>
-
-              <div class="flex flex-col gap-1">
-                <label for="team" class="text-sm font-normal"
-                  >Организация / Команда <span>*</span></label
-                >
-                <input
-                  id="team"
-                  type="text"
-                  class="border p-2 rounded-md focus:outline-[#5029de]"
-                />
-              </div>
-
+            <div
+              class="bg-white rounded-xl shadow-xl max-w-md w-full pt-6 pb-12 px-16 max-sm:px-4 relative"
+            >
               <button
-                type="submit"
-                class="mt-2 bg-[#5029de] text-white py-2 rounded-md hover:bg-[#4124ab] transition shadow-[]"
+                @click="closeForm"
+                class="absolute top-2 right-3 text-3xl"
               >
-                Зарегистрироваться
+                ×
               </button>
-              <p class="text-[.65em] text-center text-zinc-600">
-                Нажимая кнопку, вы даете согласие на
-                <a class="underline" href="">обработку персональных данных</a>
-              </p>
-            </form>
+
+              <h2 class="text-md font-medium my-8 text-center">
+                Отправь заявку на чемпионат прямо сейчас!
+              </h2>
+
+              <form class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
+                  <label for="name" class="text-sm font-normal"
+                    >ФИО <span>*</span></label
+                  >
+                  <input
+                    id="name"
+                    type="text"
+                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label for="email" class="text-sm font-normal"
+                    >Email <span>*</span></label
+                  >
+                  <input
+                    id="email"
+                    type="email"
+                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label for="phone" class="text-sm font-normal"
+                    >Телефон <span>*</span></label
+                  >
+                  <input
+                    id="phone"
+                    type="tel"
+                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <label for="team" class="text-sm font-normal"
+                    >Организация / Команда <span>*</span></label
+                  >
+                  <input
+                    id="team"
+                    type="text"
+                    class="border p-2 rounded-md focus:outline-[#5029de]"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  class="mt-2 bg-[#5029de] text-white py-2 rounded-md hover:bg-[#4124ab] transition shadow-[]"
+                >
+                  Зарегистрироваться
+                </button>
+                <p class="text-[.65em] text-center text-zinc-600">
+                  Нажимая кнопку, вы даете согласие на
+                  <a class="underline" href="">обработку персональных данных</a>
+                </p>
+              </form>
+            </div>
           </div>
-        </div>
+        </transition>
         <h1
-          class="text-[clamp(2rem,5vw,4rem)] border-2 border-[#5029de] bg-black/50 uppercase px-[2vw] py-[2vh] text-stroke text-center max-sm:text-xs"
+          class="text-[clamp(3rem,5vw,4rem)] border-2 border-[#5029de] bg-black/50 uppercase px-[2vw] py-[2vh] text-stroke text-center max-sm:text-[1rem] max-sm:px-[8vw]"
         >
           alliance championship 2025
         </h1>
         <div
-          class="text-center font-medium text-[clamp(1rem,2vw,1.5rem)] max-sm:text-[.7rem] max-sm:opacity-[.9]"
+          class="text-center font-medium text-[clamp(1rem,2vw,1.5rem)] max-sm:text-[.8rem] max-sm:opacity-[.9]"
         >
           <h2>Махачкала, Дворец спорта "Автодор"</h2>
           <h2>24-25 Мая, 2025</h2>
@@ -239,25 +244,25 @@ onUnmounted(() => {
         class="flex flex-col gap-6 w-full items-center mt-10 sm:absolute bottom-0 mb-4"
       >
         <div class="flex flex-col gap-2 items-center">
-          <p class="sm:hidden font-medium">Наши спонсоры:</p>
+          <p class="sm:hidden font-semibold">Наши спонсоры:</p>
           <div class="flex flex-row gap-8 items-center">
             <a href="">
               <img
-                class="h-[clamp(3rem,10vw,6rem)]"
+                class="h-[clamp(4rem,10vw,6rem)]"
                 src="./images/миркато.png"
                 alt=""
               />
             </a>
             <a href="">
               <img
-                class="h-[clamp(4rem,15vw,10rem)]"
+                class="h-[clamp(6rem,15vw,10rem)]"
                 src="./images/дихард.png"
                 alt=""
               />
             </a>
             <a href="">
               <img
-                class="h-[clamp(3rem,10vw,6rem)]"
+                class="h-[clamp(4rem,10vw,6rem)]"
                 src="./images/архитек.png"
                 alt=""
               />
