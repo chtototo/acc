@@ -340,7 +340,7 @@ onUnmounted(() => {
       </nav>
 
       <div
-        class="flex flex-col gap-6 w-full items-center mt-10 sm:absolute bottom-0 mb-4"
+        class="flex flex-col gap-6 w-full items-center mt-10 sm:absolute sh:relative bottom-0 mb-4"
       >
         <div class="flex flex-col gap-2 items-center">
           <p class="sm:hidden font-semibold">Наши спонсоры:</p>

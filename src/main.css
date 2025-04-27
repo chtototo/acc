@@ -15,7 +15,7 @@
 }
 
 body {
-    @apply overflow-x-hidden min-h-screen sm:overflow-y-hidden
+    @apply overflow-x-hidden min-h-screen sm:overflow-y-hidden sh:overflow-y-auto
 }
 
 .text-stroke {
@@ -24,9 +24,8 @@ body {
 }
 
 button:hover,
-a:hover,
-button:active {
-    @apply sm:transition-[all_.2s_ease-in-out] sm:hover:scale-[.97] sm:hover:brightness-[.9] max-sm:bg-[#5029dea8]
+a:hover {
+    @apply sm:transition-[all_.2s_ease-in-out] hover:scale-[.97] sm:hover:brightness-[.9] max-sm:bg-[#5029de57]
 }
 
 .fade-enter-active,
