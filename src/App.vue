@@ -26,8 +26,18 @@ const dayLabel = ref("дней"),
   minuteLabel = ref("минут"),
   secondLabel = ref("секунд");
 
+function disableBodyScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
+function enableBodyScroll() {
+  document.body.style.overflow = '';
+}
+
+
 function openForm() {
   showForm.value = true;
+  disableBodyScroll();
   if (firstOpen.value) {
     animateOnce.value = true;
     firstOpen.value = false;
@@ -38,7 +48,9 @@ function openForm() {
 
 function closeForm() {
   showForm.value = false;
+  enableBodyScroll();
 }
+
 
 function openPrivacyPolicy() {
   showPrivacyPolicy.value = true;
@@ -221,7 +233,6 @@ onUnmounted(() => {
                 персональных данных является обязательным для продолжения
                 использования формы.
               </p>
-              <!-- Дополнительно можно добавить весь текст политики -->
             </div>
           </div>
         </transition>

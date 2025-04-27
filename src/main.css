@@ -23,31 +23,34 @@ body {
     paint-order: stroke fill;
 }
 
-button:hover, a:hover, button:active {
+button:hover,
+a:hover,
+button:active {
     @apply sm:transition-[all_.2s_ease-in-out] sm:hover:scale-[.97] sm:hover:brightness-[.9] max-sm:bg-[#5029dea8]
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s;
+    transition: opacity 0.3s;
 }
+
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
 
 .slide-down-enter-active {
     animation: slideDown 0.5s ease forwards;
-  }
-  
-  @keyframes slideDown {
+}
+
+@keyframes slideDown {
     0% {
-      transform: translateY(-30%);
-      opacity: 0;
+        transform: translateY(-30%);
+        opacity: 0;
     }
+
     100% {
-      transform: translateY(0);
-      opacity: 1;
+        transform: translateY(0);
+        opacity: 1;
     }
-  }
-  
+}
