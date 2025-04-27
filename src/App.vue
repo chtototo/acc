@@ -27,13 +27,12 @@ const dayLabel = ref("дней"),
   secondLabel = ref("секунд");
 
 function disableBodyScroll() {
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = "hidden";
 }
 
 function enableBodyScroll() {
-  document.body.style.overflow = '';
+  document.body.style.overflow = "";
 }
-
 
 function openForm() {
   showForm.value = true;
@@ -51,13 +50,15 @@ function closeForm() {
   enableBodyScroll();
 }
 
-
 function openPrivacyPolicy() {
   showPrivacyPolicy.value = true;
-  closeForm();
 }
 
 function closePrivacyPolicy() {
+  showPrivacyPolicy.value = false;
+}
+
+function backdropClickPrivacyPolicy() {
   showPrivacyPolicy.value = false;
 }
 
@@ -216,7 +217,10 @@ onUnmounted(() => {
               class="fixed inset-0 bg-black/50 z-40"
               @click="showPrivacyPolicy = false"
             ></div>
-            <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-8 z-50">
+
+            <div
+              class="relative bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[80vh] p-8 z-50 overflow-y-auto"
+            >
               <button
                 @click="showPrivacyPolicy = false"
                 class="absolute top-2 right-3 text-3xl cursor-pointer"
@@ -226,12 +230,23 @@ onUnmounted(() => {
               <h3 class="text-xl font-semibold text-center mb-6">
                 Политика конфиденциальности
               </h3>
-              <p>
+              <p class="mb-4">
                 Ваши персональные данные будут использоваться исключительно для
                 целей обработки вашей заявки. Мы уважаем вашу конфиденциальность
-                и не передаем информацию третьим лицам. Согласие на обработку
-                персональных данных является обязательным для продолжения
-                использования формы.
+                и не передаем информацию третьим лицам.
+              </p>
+              <p class="mb-4">
+                Согласие на обработку персональных данных является обязательным
+                для продолжения использования формы. Вы вправе в любой момент
+                отозвать свое согласие.
+              </p>
+              <p class="mb-4">
+                Мы принимаем меры по защите ваших данных в соответствии с
+                действующим законодательством.
+              </p>
+              <p class="mb-4">
+                Ознакомьтесь с полной версией нашей политики на сайте или
+                свяжитесь с нами для получения дополнительной информации.
               </p>
             </div>
           </div>
