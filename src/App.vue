@@ -109,14 +109,18 @@ onUnmounted(() => {
       class="text-white px-[5vw] sm:pt-28 max-sm:pt-8 flex flex-col items-center gap-4 max-sm:gap-16"
     >
       <div class="flex flex-col gap-2">
-        <transition :name="animateOnce ? 'slide-down' : ''">
+        <transition name="fade">
           <div
             v-if="showForm"
             class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4 font-light text-zinc-500"
+          ></div>
+        </transition>
+        <transition :name="animateOnce ? 'slide-down' : ''">
+          <div
+            v-if="showForm"
+            class="fixed z-[100] m-auto h-fit top-0 bottom-0 left-0 right-0 bg-white rounded-xl shadow-xl max-w-md w-full max-sm:px-4 overflow-y-auto max-h-screen text-zinc-500 font-normal"
           >
-            <div
-              class="bg-white rounded-xl shadow-xl max-w-md w-full pt-6 pb-12 px-16 max-sm:px-4 relative overflow-y-auto max-h-screen"
-            >
+            <div class="relative w-full h-full pt-6 pb-12 px-16">
               <button
                 @click="closeForm"
                 class="absolute top-2 right-3 text-3xl"
@@ -136,7 +140,7 @@ onUnmounted(() => {
                   <input
                     id="name"
                     type="text"
-                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10 text-zinc-900"
                     required
                   />
                 </div>
@@ -148,7 +152,7 @@ onUnmounted(() => {
                   <input
                     id="email"
                     type="email"
-                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10 text-zinc-900"
                     required
                   />
                 </div>
@@ -160,7 +164,7 @@ onUnmounted(() => {
                   <input
                     id="phone"
                     type="tel"
-                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10 text-zinc-900"
                     required
                   />
                 </div>
@@ -172,7 +176,7 @@ onUnmounted(() => {
                   <input
                     id="team"
                     type="text"
-                    class="border p-2 rounded-md focus:outline-[#5029de] h-10"
+                    class="border p-2 rounded-md focus:outline-[#5029de] h-10 text-zinc-900"
                     required
                   />
                 </div>
@@ -183,7 +187,7 @@ onUnmounted(() => {
                   </label>
                   <select
                     id="weight"
-                    class="border p-2 rounded-md focus:outline-[#5029de] bg-white h-10"
+                    class="border p-2 rounded-md focus:outline-[#5029de] bg-white h-10 text-zinc-900"
                   >
                     <option value="40">40</option>
                     <option value="41">41</option>
@@ -211,7 +215,7 @@ onUnmounted(() => {
         <transition name="fade">
           <div
             v-if="showPrivacyPolicy"
-            class="fixed inset-0 z-50 flex items-center justify-center px-4 font-light text-zinc-500"
+            class="fixed inset-0 z-[110] flex items-center justify-center px-4 font-light text-zinc-500"
           >
             <div
               class="fixed inset-0 bg-black/50 z-40"
