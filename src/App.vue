@@ -103,7 +103,7 @@ onUnmounted(() => {
       class="absolute inset-0 -z-10 bg-[url(./images/background.jpg)] bg-no-repeat bg-cover bg-[center_66%]"
     ></div>
 
-    <div class="fixed inset-0 -z-10 bg-black/50"></div>
+    <div class="fixed inset-0 -z-10 bg-black/50 min-h-screen h-full"></div>
 
     <div
       class="text-white px-[5vw] sm:pt-28 max-sm:pt-8 flex flex-col items-center gap-4 max-sm:gap-16"
